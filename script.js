@@ -37,6 +37,7 @@ function getPlayerChoice(){
     return playerSelection;
 }
 
+//Stating the results of the previous functions
 getComputerChoice(computerSelection);
 getPlayerChoice(playerSelection);
 
@@ -71,4 +72,5 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//Final result
 console.log(playRound(playerSelection, computerSelection));
