@@ -14,4 +14,25 @@ function getComputerChoice(){
     return computerSelection;
 }
 
+function getPlayerChoice(){
+    playerSelection = 
+    prompt("Make your choice!").toLowerCase();
+    switch (playerSelection){
+        case "rock":
+            playerSelection = "Rock"
+        break;
+        case "paper":
+            playerSelection = "Paper"
+        break;
+        case "scissors":
+            playerSelection = "Scissors"
+        break;
+        default:
+            alert("Enter the required value, reload the web"); 
+        break;
+    }
+    return playerSelection;
+}
+
 console.log(getComputerChoice(computerSelection));
+console.log(getPlayerChoice(playerSelection));
