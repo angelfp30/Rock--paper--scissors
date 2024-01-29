@@ -1,7 +1,9 @@
 console.log("Welcome to Rock Paper Scissors, you'll play here in the console");
+//Declaring variables
 let computerSelection;
 let playerSelection;
 
+//Creating computer's choice
 function getComputerChoice(){
     computerSelection = Math.floor(Math.random()*3);
     if (computerSelection == 0){
@@ -14,6 +16,7 @@ function getComputerChoice(){
     return computerSelection;
 }
 
+//Function to get the player's choice
 function getPlayerChoice(){
     playerSelection = 
     prompt("Make your choice!").toLowerCase();
@@ -34,5 +37,6 @@ function getPlayerChoice(){
     return playerSelection;
 }
 
+//Testing the results and returned values of each function
 console.log(getComputerChoice(computerSelection));
 console.log(getPlayerChoice(playerSelection));
