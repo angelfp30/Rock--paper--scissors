@@ -37,6 +37,9 @@ function getPlayerChoice(){
     return playerSelection;
 }
 
+getComputerChoice(computerSelection);
+getPlayerChoice(playerSelection);
+
 //Conditions of the game
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "Rock" && computerSelection == "Paper") {
@@ -46,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
         return "You win, rock wins to scissors!"
 
     } else if (playerSelection == "Rock" && computerSelection == "Rock") {
-        return "Both made the same choice, it's a tie!"
+        return "Both picked rock, it's a tie!"
 
     } else if (playerSelection == "Paper" && computerSelection == "Rock") {
         return "You win, paper wins to rock!";
@@ -55,7 +58,7 @@ function playRound(playerSelection, computerSelection) {
         return "You lose, scissors wins to paper!"
 
     } else if (playerSelection == "Paper" && computerSelection == "Paper") {
-        return "Both made the same choice, it's a tie!"
+        return "Both picked paper, it's a tie!"
 
     } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
         return "You lose, rock wins to scissors!"
@@ -63,12 +66,9 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
         return "You win, scissors wins to paper!"
 
-    } else {
-        return "Both made the same choice, it's a tie!"
+    } else if (playerSelection == "Scissors" && computerSelection == "Scissors"){
+        return "Both picked scissors, it's a tie!"
     }
 }
 
-
-//Testing the results and returned values of each function
-console.log(getComputerChoice(computerSelection));
-console.log(getPlayerChoice(playerSelection));
+console.log(playRound(playerSelection, computerSelection));
