@@ -1,4 +1,4 @@
-console.log("Welcome to Rock Paper Scissors, you'll play here in the console");
+
 //Declaring variables
 let computerSelection;
 let playerSelection;
@@ -16,30 +16,11 @@ function getComputerChoice(){
     return computerSelection;
 }
 
-//Function to get the player's choice
-function getPlayerChoice(){
-    playerSelection = 
-    prompt("Make your choice!").toLowerCase();
-    switch (playerSelection){
-        case "rock":
-            playerSelection = "Rock"
-        break;
-        case "paper":
-            playerSelection = "Paper"
-        break;
-        case "scissors":
-            playerSelection = "Scissors"
-        break;
-        default:
-            alert("Enter the required value, reload the web"); 
-        break;
-    }
-    return playerSelection;
-}
+
 
 //Stating the results of the previous functions
 getComputerChoice(computerSelection);
-getPlayerChoice(playerSelection);
+//getPlayerChoice(playerSelection);
 let winCount;
 let loseCount;
 
@@ -79,6 +60,38 @@ function playRound(playerSelection, computerSelection) {
         return "Both picked scissors, it's a tie!"
     }
 }
+
+//Changed the console fuction for buttons
+
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const sciBtn = document.querySelector("#scissors");
+
+rockBtn.addEventListener("click", () =>
+{
+        playerSelection = "Rock";
+        playRound();
+})
+
+paperBtn.addEventListener("click", () =>
+{
+        playerSelection = "Paper";
+        playRound();
+})
+
+sciBtn.addEventListener("click", () =>
+{
+        playerSelection = "Scissors";
+        playRound();
+})
+
+function displayResults(){
+
+    const div = document.createElement('div');
+    
+
+}
+
 //Function to make the 5 round game
 function playGame(){
         getComputerChoice();
