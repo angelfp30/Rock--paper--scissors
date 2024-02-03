@@ -176,16 +176,9 @@ sciBtn.addEventListener("click", () =>
 })
 
 const container = document.querySelector('#container');
-
 const finalText = document.createElement('h3');
-scores.appendChild(finalText);
+container.appendChild(finalText);
 
-if (winCount === 5 || pcWinCount === 5) {
-    endGame();
-    rockBtn.setAttribute("disabled");
-    paperBtn.setAttribute("disabled");
-    sciBtn.setAttribute("disabled");
-}
 
 function endGame(){
 
@@ -196,6 +189,7 @@ function endGame(){
         } else {
             finalText.textContent = "You lose :("
         }
+
         rockBtn.setAttribute("disabled", "");
         paperBtn.setAttribute("disabled", "");
         sciBtn.setAttribute("disabled", "");
@@ -203,8 +197,19 @@ function endGame(){
         const newGame = document.createElement("button");
         newGame.textContent = "Play Again?"
         container.appendChild(newGame);
+
+        newGame.addEventListener("click", () =>
+        {
+            scores.innerHTML = "";
+            rockBtn.disabled = false;
+            paperBtn.disabled = false;
+            sciBtn.disabled = false;
+            winCount = 0;
+            pcWinCount = 0;
+            finalText.textContent = "";
+
+            newGame.remove();
+        })
     }
-
 }
-
 
