@@ -17,27 +17,25 @@ function getComputerChoice(){
 }
 
 
-
-//Stating the results of the previous functions
-getComputerChoice(computerSelection);
-//getPlayerChoice(playerSelection);
-let winCount;
-let loseCount;
-const scores = document.querySelector('#results');
+let winCount = 0;
+let pcWinCount = 0;
+const scores = document.querySelector('#scores');
 
 //Conditions of the game
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "Rock" && computerSelection == "Paper") {
-        loseCount++
+        pcWinCount++
 
         const div = document.createElement('div');
         const phrase = document.createElement('p');
         phrase.textContent = "You lose, paper wins to rock!";
         
         div.appendChild(phrase);
-        
         scores.appendChild(div);
 
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
 
     } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
         winCount++
@@ -49,6 +47,9 @@ function playRound(playerSelection, computerSelection) {
         div.appendChild(phrase);
         scores.appendChild(div);
 
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
 
     } else if (playerSelection == "Rock" && computerSelection == "Rock") {
         const div = document.createElement('div');
@@ -57,6 +58,10 @@ function playRound(playerSelection, computerSelection) {
         
         div.appendChild(phrase);
         scores.appendChild(div);
+
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
 
     } else if (playerSelection == "Paper" && computerSelection == "Rock") {
         winCount++
@@ -67,14 +72,22 @@ function playRound(playerSelection, computerSelection) {
         div.appendChild(phrase);
         scores.appendChild(div);
 
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
+
     } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        loseCount++
+        pcWinCount++
         const div = document.createElement('div');
         const phrase = document.createElement('p');
         phrase.textContent = "You lose, scissors wins to paper!"
         
         div.appendChild(phrase);
         scores.appendChild(div);
+
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
        
     } else if (playerSelection == "Paper" && computerSelection == "Paper") {
         const div = document.createElement('div');
@@ -83,15 +96,23 @@ function playRound(playerSelection, computerSelection) {
         
         div.appendChild(phrase);
         scores.appendChild(div);
+        
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
 
     } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        loseCount++
+        pcWinCount++
         const div = document.createElement('div');
         const phrase = document.createElement('p');
         phrase.textContent = "You lose, rock wins to scissors!"
         
         div.appendChild(phrase);
         scores.appendChild(div);
+
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
 
     } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
         winCount++
@@ -103,6 +124,9 @@ function playRound(playerSelection, computerSelection) {
         div.appendChild(phrase);
         scores.appendChild(div);
         
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
 
     } else if (playerSelection == "Scissors" && computerSelection == "Scissors"){
         const div = document.createElement('div');
@@ -111,7 +135,12 @@ function playRound(playerSelection, computerSelection) {
         
         div.appendChild(phrase);
         scores.appendChild(div);
+        
+        const results = document.createElement("p");
+        results.textContent = " Your score: " + winCount + "  Computer score: " + pcWinCount;
+        scores.appendChild(results);
     }
+    endGame();
 }
 
 //Changed the console fuction for buttons
@@ -120,11 +149,14 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const sciBtn = document.querySelector("#scissors");
 
+
+
 rockBtn.addEventListener("click", () =>
 {
     getComputerChoice()
     playerSelection = "Rock";
     playRound(playerSelection, computerSelection);
+
 })
 
 paperBtn.addEventListener("click", () =>
@@ -132,6 +164,7 @@ paperBtn.addEventListener("click", () =>
     getComputerChoice()
     playerSelection = "Paper";
     playRound(playerSelection, computerSelection);
+
 })
 
 sciBtn.addEventListener("click", () =>
@@ -139,23 +172,39 @@ sciBtn.addEventListener("click", () =>
     getComputerChoice()
     playerSelection = "Scissors";
     playRound(playerSelection, computerSelection);
-        
+
 })
 
+const container = document.querySelector('#container');
 
+const finalText = document.createElement('h3');
+scores.appendChild(finalText);
 
+if (winCount === 5 || pcWinCount === 5) {
+    endGame();
+    rockBtn.setAttribute("disabled");
+    paperBtn.setAttribute("disabled");
+    sciBtn.setAttribute("disabled");
+}
 
-//Function to make the 5 round game
-/*function playGame(){
+function endGame(){
+
+    if (winCount === 5 || pcWinCount === 5) {
+
+        if (winCount === 5) {
+            finalText.textContent = "You won!!! LETSGOO"
+        } else {
+            finalText.textContent = "You lose :("
+        }
+        rockBtn.setAttribute("disabled", "");
+        paperBtn.setAttribute("disabled", "");
+        sciBtn.setAttribute("disabled", "");
         
-    if (winCount > loseCount) {
-        console.log("You won!!!");
-    } else {
-        console.log("You lose :(");
+        const newGame = document.createElement("button");
+        newGame.textContent = "Play Again?"
+        container.appendChild(newGame);
     }
-}*/
-//Calling the function
 
-
+}
 
 
